@@ -1,0 +1,28 @@
+! ============================
+! LinkedIn Feed Cleanup Rules
+! Hide Sponsored / Promoted / Suggested posts
+! ============================
+
+! ---- Sponsored ----
+www.linkedin.com##div.feed-shared-update-v2:has(:is(span, a):has-text(/Sponsored/i))
+www.linkedin.com##article:has(:is(span, a):has-text(/Sponsored/i))
+www.linkedin.com##div:has([data-sponsored])
+www.linkedin.com##div:has([data-test-recommendation-sponsored])
+
+! ---- Promoted ----
+www.linkedin.com##div.feed-shared-update-v2:has(:is(span, a):has-text(/Promoted/i))
+www.linkedin.com##article:has(:is(span, a):has-text(/Promoted/i))
+
+! ---- Suggested & Recommended ----
+www.linkedin.com##div.feed-shared-update-v2:has(:is(span, div):has-text(/Suggested/i))
+www.linkedin.com##article:has(:is(span, div):has-text(/Suggested/i))
+
+! Variants LinkedIn uses for suggested content
+www.linkedin.com##div.feed-shared-update-v2:has(span:has-text(/Recommended for you/i))
+www.linkedin.com##div.feed-shared-update-v2:has(span:has-text(/Because you/i))
+www.linkedin.com##article:has(div:has-text(/Suggested for you/i))
+www.linkedin.com##div:has([data-test-recommendation])
+
+! ---- Generic catch-all for any labeled recommendations ----
+www.linkedin.com##div.feed-shared-update-v2:has(span:has-text(/for you/i))
+www.linkedin.com##article:has(span:has-text(/for you/i))
