@@ -1,28 +1,31 @@
-! ============================
-! LinkedIn Feed Cleanup Rules
-! Hide Sponsored / Promoted / Suggested posts
-! ============================
+! --- LinkedIn : Bloquer Sponsorisé & Promu ---
+linkedin.com##.feed-shared-update-v2:has(.update-components-actor__sub-description:contains(/Sponsorisé|Promoted|Promu/))
+linkedin.com##.feed-shared-update-v2:has(.update-components-header:contains(/Sponsorisé|Promoted|Promu/))
 
-! ---- Sponsored ----
-www.linkedin.com##div.feed-shared-update-v2:has(:is(span, a):has-text(/Sponsored/i))
-www.linkedin.com##article:has(:is(span, a):has-text(/Sponsored/i))
-www.linkedin.com##div:has([data-sponsored])
-www.linkedin.com##div:has([data-test-recommendation-sponsored])
+! --- LinkedIn : Bloquer Suggéré & Recommandé ---
+linkedin.com##.feed-shared-update-v2:has-text(/Suggéré pour vous|Suggested for you/)
+linkedin.com##.feed-shared-update-v2:has-text(/Recommandé pour vous|Recommended for you/)
+linkedin.com##.feed-shared-update-v2:has-text(/Vous pourriez être intéressé|You might be interested/)
 
-! ---- Promoted ----
-www.linkedin.com##div.feed-shared-update-v2:has(:is(span, a):has-text(/Promoted/i))
-www.linkedin.com##article:has(:is(span, a):has-text(/Promoted/i))
+! --- LinkedIn : Bloquer "Suivez" / Suggestions de personnes ---
+linkedin.com##.feed-shared-update-v2:has-text(/^Suivre$|^Follow$/)
 
-! ---- Suggested & Recommended ----
-www.linkedin.com##div.feed-shared-update-v2:has(:is(span, div):has-text(/Suggested/i))
-www.linkedin.com##article:has(:is(span, div):has-text(/Suggested/i))
+! --- LinkedIn (EN) : Block Sponsored & Promoted ---
+linkedin.com##.feed-shared-update-v2:has(.update-components-actor__sub-description:contains(Promoted))
+linkedin.com##.feed-shared-update-v2:has(.update-components-actor__sub-description:contains(Sponsored))
 
-! Variants LinkedIn uses for suggested content
-www.linkedin.com##div.feed-shared-update-v2:has(span:has-text(/Recommended for you/i))
-www.linkedin.com##div.feed-shared-update-v2:has(span:has-text(/Because you/i))
-www.linkedin.com##article:has(div:has-text(/Suggested for you/i))
-www.linkedin.com##div:has([data-test-recommendation])
+! --- LinkedIn (EN) : Block Suggested & Recommended ---
+linkedin.com##.feed-shared-update-*:has-text(Suggested for you)
+linkedin.com##.feed-shared-update-*:has-text(Suggested)
+linkedin.com##.feed-shared-update-*:has-text(Recommended for you)
+linkedin.com##.feed-shared-update-*:has-text(Because you viewed)
+linkedin.com##.feed-shared-update-*:has-text(You might like)
+linkedin.com##.feed-shared-update-*:has-text(People you may know)
 
-! ---- Generic catch-all for any labeled recommendations ----
-www.linkedin.com##div.feed-shared-update-v2:has(span:has-text(/for you/i))
-www.linkedin.com##article:has(span:has-text(/for you/i))
+! --- LinkedIn (EN) : Block "Follow" suggestions ---
+linkedin.com##.feed-shared-update-v2:has-text(/^Follow$/)
+
+! --- LinkedIn (EN) : Block Puzzles & "Add to feed" ---
+linkedin.com##.feed-shared-update-v2:has-text(Today’s puzzle)
+linkedin.com##.news-module:has-text(Today’s puzzle)
+linkedin.com##.feed-shared-update-v2:has-text(Add to your feed)
