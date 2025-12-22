@@ -1,31 +1,44 @@
-! --- LinkedIn : Bloquer Sponsorisé & Promu ---
-linkedin.com##.feed-shared-update-v2:has(.update-components-actor__sub-description:contains(/Sponsorisé|Promoted|Promu/))
-linkedin.com##.feed-shared-update-v2:has(.update-components-header:contains(/Sponsorisé|Promoted|Promu/))
+! --- LinkedIn : Sponsorisé / Sponsored (Strict) ---
+! Cible le texte exact pour éviter les faux positifs
+linkedin.com##div[data-urn]:has-text(/^(Sponsorisé|Sponsored|Promu|Promoted)$/)
 
-! --- LinkedIn : Bloquer Suggéré & Recommandé ---
-linkedin.com##.feed-shared-update-v2:has-text(/Suggéré pour vous|Suggested for you/)
-linkedin.com##.feed-shared-update-v2:has-text(/Recommandé pour vous|Recommended for you/)
-linkedin.com##.feed-shared-update-v2:has-text(/Vous pourriez être intéressé|You might be interested/)
+! --- LinkedIn : Suggéré & Recommandé (FR & EN) ---
+linkedin.com##div[data-urn]:has-text(/Suggéré pour vous|Suggested for you/)
+linkedin.com##div[data-urn]:has-text(/Recommandé pour vous|Recommended for you/)
+linkedin.com##div[data-urn]:has-text(/Vous pourriez être intéressé|You might be interested/)
+linkedin.com##div[data-urn]:has-text(/Because you viewed|You might like|People you may know/)
+linkedin.com##div[data-urn]:has-text(/Add to your feed/)
 
-! --- LinkedIn : Bloquer "Suivez" / Suggestions de personnes ---
-linkedin.com##.feed-shared-update-v2:has-text(/^Suivre$|^Follow$/)
+! --- LinkedIn : Bloquer "Suivez" / Follow ---
+linkedin.com##div[data-urn]:has-text(/^Suivre$|^Follow$/)
 
-! --- LinkedIn (EN) : Block Sponsored & Promoted ---
-linkedin.com##.feed-shared-update-v2:has(.update-components-actor__sub-description:contains(Promoted))
-linkedin.com##.feed-shared-update-v2:has(.update-components-actor__sub-description:contains(Sponsored))
+! --- LinkedIn : Puzzles & Jeux (Feed & Sidebar) ---
+linkedin.com##.news-module:has-text(/Today’s puzzle|Jeu du jour/)
+linkedin.com##div[data-urn]:has-text(/Today’s puzzle|Jeu du jour/)
+linkedin.com##section.artdeco-card:has-text(/Today’s puzzle|Jeu du jour/)
 
-! --- LinkedIn (EN) : Block Suggested & Recommended ---
-linkedin.com##.feed-shared-update-*:has-text(Suggested for you)
-linkedin.com##.feed-shared-update-*:has-text(Suggested)
-linkedin.com##.feed-shared-update-*:has-text(Recommended for you)
-linkedin.com##.feed-shared-update-*:has-text(Because you viewed)
-linkedin.com##.feed-shared-update-*:has-text(You might like)
-linkedin.com##.feed-shared-update-*:has-text(People you may know)
 
-! --- LinkedIn (EN) : Block "Follow" suggestions ---
-linkedin.com##.feed-shared-update-v2:has-text(/^Follow$/)
 
-! --- LinkedIn (EN) : Block Puzzles & "Add to feed" ---
-linkedin.com##.feed-shared-update-v2:has-text(Today’s puzzle)
-linkedin.com##.news-module:has-text(Today’s puzzle)
-linkedin.com##.feed-shared-update-v2:has-text(Add to your feed)
+! ============================
+! LinkedIn - Mode Agressif (EN & FR)
+! ============================
+
+! --- BLOQUER TOUT ce qui contient "Sponsorisé/Promoted" ---
+! Masque le post entier si le mot apparait n'importe où dedans
+linkedin.com##div[data-urn]:has-text(/Sponsorisé|Sponsored|Promoted|Promu/)
+
+! --- Suggéré / Recommandé / Parce que vous avez vu ---
+linkedin.com##div[data-urn]:has-text(/Suggested for you|Suggéré pour vous/)
+linkedin.com##div[data-urn]:has-text(/Recommended for you|Recommandé pour vous/)
+linkedin.com##div[data-urn]:has-text(/Because you viewed|Parce que vous avez vu/)
+linkedin.com##div[data-urn]:has-text(/People you may know|Connaissez-vous/)
+linkedin.com##div[data-urn]:has-text(/You might like|Vous pourriez aimer/)
+
+! --- Add to feed / Follow ---
+linkedin.com##div[data-urn]:has-text(/Add to your feed|Ajouter à votre fil/)
+linkedin.com##div[data-urn]:has-text(/^Follow$|^Suivre$/)
+
+! --- Puzzles / Jeux (Feed + Sidebar) ---
+linkedin.com##div[data-urn]:has-text(/Today’s puzzle|Jeu du jour/)
+linkedin.com##section.artdeco-card:has-text(/Today’s puzzle|Jeu du jour/)
+linkedin.com##.news-module:has-text(/Today’s puzzle|Jeu du jour/)
