@@ -42,3 +42,12 @@ linkedin.com##div[data-urn]:has-text(/^Follow$|^Suivre$/)
 linkedin.com##div[data-urn]:has-text(/Today’s puzzle|Jeu du jour/)
 linkedin.com##section.artdeco-card:has-text(/Today’s puzzle|Jeu du jour/)
 linkedin.com##.news-module:has-text(/Today’s puzzle|Jeu du jour/)
+
+
+! Ajout 25.06.2026 : posts sponsorisés dans le fil d'actualité
+linkedin.com##.feed-shared-update-v2:has-text(Sponsorisé)
+linkedin.com##.feed-shared-update-v2:has-text(Promoted)
+
+! Ajout 25.06.2026 : offres d'emploi sponsorisées
+linkedin.com##li:has-text(Sponsorisé)
+linkedin.com##li:has-text(Promoted)
